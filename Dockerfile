@@ -17,15 +17,13 @@ RUN apk add --update ca-certificates \
     && chmod +x /usr/local/bin/kubectl \
     && curl -L http://storage.googleapis.com/kubernetes-helm/${FILENAME} -o /tmp/${FILENAME} \
     && tar -zxvf /tmp/${FILENAME} -C /tmp \
-    && mv /tmp/linux-amd64/helm /bin/helm \
+    && mv /tmp/linux-amd64/helm /bin/helm 
     # && curl -sSL http://deis.io/deis-cli/install-v2.sh | bash \
     # && mv $PWD/deis /usr/local/bin/deis \
     # Cleanup uncessary files
-    && apk del --purge deps \
-    && rm /var/cache/apk/* \
+#RUN apk del --purge deps 
+RUN rm /var/cache/apk/* \
     && rm -rf /tmp/*
-
-
 WORKDIR /config
 
 CMD bash
